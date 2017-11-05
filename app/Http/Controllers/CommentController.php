@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Comment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Validator;
 
 class CommentController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +49,7 @@ class CommentController extends Controller
     {
          $validator = Validator::make(request()->all(), [
             'body'=> 'required',
-            'user_id' => 'exists:users',
+            'user_id' => 'required',
             'post_id' => 'exists:posts'
             ]);
         if ($validator->fails()) {
