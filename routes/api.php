@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::prefix('v1')->group(function(){
 
 //auth Endpoints
 Route::post('register', 'AuthController@register');
@@ -30,3 +31,4 @@ Route::resource('comments', 'CommentController');
 
 Route::get('user/comments/{id}', 'UserController@getComments');
 Route::get('user/posts', 'UserController@getAllPosts');
+});
