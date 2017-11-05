@@ -12,7 +12,7 @@ class CommentController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api', ['except' => ['index', 'show']]);
     }
     /**
      * Display a listing of the resource.
@@ -29,15 +29,15 @@ class CommentController extends Controller
                 ],200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    // *
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+     
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -97,14 +97,14 @@ class CommentController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Comment not found.',
-                'code' => '001',
+                'code' => '002',
                 'data'=> []
                 ],200);
         }
         catch (NotFoundHttpException $e) {
             return response()->json([
                 'message' => 'Comment not found.',
-                'code' => '001',
+                'code' => '002',
                 'data'=> []
                 ],200);
        }
@@ -116,10 +116,10 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
-    {
-        //return view to edit the comment
-    }
+    // public function edit(Comment $comment)
+    // {
+    //     //return view to edit the comment
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -136,7 +136,7 @@ class CommentController extends Controller
         }catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Comment not found.',
-                'code' => '001',
+                'code' => '002',
                 'data'=> []
                 ],200);
         }
@@ -163,13 +163,13 @@ class CommentController extends Controller
         }catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Comment not found.',
-                'code' => '001',
+                'code' => '002',
                 'data'=> []
                 ],200);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Something went wrong.',
-                'code' => '001',
+                'code' => '111',
                 'data'=> $comment
                 ],200);
         }

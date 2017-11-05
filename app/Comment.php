@@ -13,6 +13,6 @@ class Comment extends Model
 
     public function posts()
     {
-    	return $this->hasMany(Comments::class);
+    	return $this->belongsTo(Post::class);
     }
 }

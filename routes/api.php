@@ -27,3 +27,6 @@ Route::resource('posts', 'PostController');
 
 //comments
 Route::resource('comments', 'CommentController');
+
+Route::get('user/comments/{id}', 'UserController@getComments');
+Route::get('user/posts', 'UserController@getAllPosts');

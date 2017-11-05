@@ -56,7 +56,7 @@ class AuthController extends Controller
     	} catch (ModelNotFoundException $e) {
     		return response()->json([
     			'message' => 'User not found.',
-    			'code' => '003',
+    			'code' => '002',
     			'data'=> []
     			],200);
     	}
@@ -91,7 +91,7 @@ class AuthController extends Controller
     	} catch (ModelNotFoundException $e) {
     		return response()->json([
     			'message' => 'User not found. Logout operation unsuccessful.',
-    			'code' => '003',
+    			'code' => '002',
     			'data'=> []
     			],200);
     	}catch (\Exception $e) {
@@ -100,10 +100,12 @@ class AuthController extends Controller
                 'code' => '111',
                 'data'=> []
                 ],200);
+        }
     	return response()->json([
     			'message' => 'User logout successful.',
     			'code' => '000',
     			'data'=> []
     			],200);
-    }
+    
+}
 }

@@ -1,0 +1,12 @@
+'000'  =	'Success'
+
+'001'  =	'Validation failed'
+
+'002'  =	'Not found'
+
+'002'  =	'Not logged In'
+
+'401'  =	'Unauthenticated'
+
+'111' 	=	'General Error. Contact Developer. lol'
+

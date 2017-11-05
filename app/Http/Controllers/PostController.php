@@ -10,6 +10,10 @@ use Validator;
 
 class PostController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -33,10 +37,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    // public function create()
+    // {
         
-    }
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -96,14 +100,14 @@ class PostController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Post not found.',
-                'code' => '001',
+                'code' => '002',
                 'data'=> []
                 ],200);
         }
         catch (NotFoundHttpException $e) {
             return response()->json([
                 'message' => 'Post not found.',
-                'code' => '001',
+                'code' => '002',
                 'data'=> []
                 ],200);
        }
@@ -115,10 +119,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
-    {
-        //
-    }
+    // public function edit(Post $post)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -135,7 +139,7 @@ class PostController extends Controller
         }catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Post not found.',
-                'code' => '001',
+                'code' => '002',
                 'data'=> []
                 ],200);
         }
@@ -162,13 +166,13 @@ class PostController extends Controller
         }catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Post not found.',
-                'code' => '001',
+                'code' => '002',
                 'data'=> []
                 ],200);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Post Not deleted.',
-                'code' => '001',
+                'message' => 'Something went wrong.',
+                'code' => '111',
                 'data'=> $post
                 ],200);
         }
